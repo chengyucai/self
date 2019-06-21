@@ -1,0 +1,62 @@
+body .banner {
+  position: relative;
+  overflow: hidden;
+  height: 80px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body .banner.opened, body .banner.opening {
+  height: 300px;
+}
+
+body .banner.opened > a > img, body .banner.opening > a > img {
+  top: 0px;
+}
+
+body .banner.closed, body .banner.closing {
+  height: 80px;
+}
+
+body .banner.closed > a > img, body .banner.closing > a > img {
+  top: -300px;
+}
+
+body .banner > button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  padding: 2pt;
+  border: 0;
+  outline: none;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body .banner > button:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  border-style: solid;
+  border-width: 0 8px 8px;
+  border-color: transparent transparent #eeeeee;
+}
+
+body .banner > button.show:after {
+  border-width: 8px 8px 0;
+  border-color: #eeeeee transparent transparent;
+}
+
+body .banner > a > img {
+  position: relative;
+  top: 0px;
+}
+/*# sourceMappingURL=css.css.map */
