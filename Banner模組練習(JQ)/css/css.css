@@ -50,7 +50,7 @@ body .banner > button:after {
   border-color: transparent transparent #eeeeee;
 }
 
-body .banner > button.show:after {
+body .banner > button.btn:after {
   border-width: 8px 8px 0;
   border-color: #eeeeee transparent transparent;
 }

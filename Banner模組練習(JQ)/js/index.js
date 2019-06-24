@@ -23,9 +23,9 @@
 			// 設定模組在各狀態時的class
 			class: {
 				closed: 'closed', // [string]
-				closing: '', // [string]
+				closing: 'closing', // [string]
 				opened: 'opened', // [string]
-				opening: '' // [string]
+				opening: 'opening' // [string]
 			},
 			// 是否要有transition效果
 			transition: true,
@@ -133,27 +133,29 @@
 	
 	})(jQuery);
 
+//-----------------
 
 $('.banner').banner({
-	openAtStart: false,
-	autoToggle: 500, 
-	class: {
-		closed: 'ced', // [string]
-		closing: 'cing', // [string]
-		opened: 'oed', // [string]
-		opening: 'oing' // [string]
-	},
+	// openAtStart: false,
+	autoToggle: 1000, 
+	// class: {
+	// 	closed: 'cccced', // [string]
+	// 	closing: 'ccccing', // [string]
+	// 	opened: 'ooooed', // [string]
+	// 	opening: 'ooooing' // [string]
+	// },
 	
-	button: {
-		closeText: '合', // [string]
-		openText: '開', // [string]
-		class: 'bbubbb' // [string]
-	},
+	// button: {
+	// 	closeText: '閉', // [string]
+	// 	openText: '開', // [string]
+	// 	class: 'bbubbb' // [string]
+	// },
 	// transition: false,
-	transitionTime: 3000,
-	// callbackTime: 100,
+	transitionTime: 600,
+	callbackTime: 100,
 
 });
+
 // $('.banner').banner('toggle');
 
 // $('.banner').banner('open');
