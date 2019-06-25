@@ -1,0 +1,100 @@
+$font--size: 12px;
+
+$pclist-box--width: 1000px;
+
+$Listblock-box--height: 80px;
+$Listblock-sale--color : #ff8f27;
+$Listblock-sale--wh : 20px;
+
+
+@mixin  flexcc
+    display: flex
+    align-items: center
+    justify-content: center
+
+*
+    box-sizing: border-box
+    font-size: $font--size
+    table 
+        width: 100%
+        border-spacing: 0px
+    tr,td,table 
+        margin: 0px
+        padding: 0px
+        border: 0px
+    button,p
+        outline: none
+        margin: 0px
+        border: 0px
+        padding: 0px
+        background-color: #fff0
+
+body 
+    // +flexcc
+    background-color: #e3e3e3
+    .pclist
+        width: $pclist-box--width
+        height: fit-content
+        display: grid
+        grid-template-columns: 1fr 7fr
+        overflow: hidden
+        // overflow: scroll
+        div.title
+            div
+                position: relative
+                height: $Listblock-box--height
+                background-color: #f1f1f1
+                border: 1px solid #e1e2e4
+                +flexcc
+                &:nth-child(1)
+                    background-color: #eaedf2
+            
+        div.table
+            // overflow-x: scroll
+            .Listblock
+                position: relative
+                display: -webkit-box
+                width: 100%
+                
+                >div
+                    position: relative
+                    height: $Listblock-box--height
+                    border: 1px solid #e1e2e4
+                    +flexcc
+        th 
+            padding: 0%
+            >.Listblock
+                >div
+                    background-color: #eaedf2
+        
+        td
+            >.Listblock
+                >div
+                    background-color: #ffffff
+
+                    &.sale:before
+                        content: ""
+                        position: absolute
+                        width: 0
+                        height: 0
+                        border-color: $Listblock-sale--color transparent transparent
+                        border-style: solid
+                        border-width: $Listblock-sale--wh $Listblock-sale--wh 0 0
+                        top: -1px
+                        left: -1px
+
+                    &.sale:after
+                        content: attr(data-title)
+                        position: absolute
+                        top: 0px
+                        left: $Listblock-sale--wh
+                        height: $Listblock-sale--wh
+                        color: $Listblock-sale--color
+                        font-weight: 400
+                        +flexcc
+
+                    &:hover
+                        background-color: #fff9e3
+                        border: 1px solid #ff8f27 
+
+

@@ -22,7 +22,7 @@ class MyComponent extends React.Component {
     state = {
         title: 'World',
         // 設定一開始是否為開或合
-        openAtStart: false, // [boolean] true | false
+        openAtStart: true, // [boolean] true | false
         // 設定啟動後是否要自動開或合，若設為false，就不要自勳開合；若為true是馬上自動開合；若為數字是幾毫秒之後開合
         autoToggle: true, // [boolean|number] true | false | 3000
         // 設定收合展開按鈕
@@ -41,7 +41,7 @@ class MyComponent extends React.Component {
         },
         // 是否要有transition效果
         transition: true,
-        transit: true,
+        transit: false,
 
         // 當有transition時，要執行的callback function
         callbackTime: 30,
@@ -72,7 +72,7 @@ class MyComponent extends React.Component {
         setTimeout(() => { 
             this.setState({transit: false});
         },this.state.transition);
-        for (let i=0;i<this.state.transition;i+=this.state.transition/this.state.callbackTime)
+        for (let i=1;i<this.state.transition;i+=this.state.transition/this.state.callbackTime)
             setTimeout(() => { this.state.whenTransition() },i);
     }
     seting(parameter){

@@ -1,0 +1,130 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 12px;
+}
+
+* table {
+  width: 100%;
+  border-spacing: 0px;
+}
+
+* tr, * td, * table {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+* button, * p {
+  outline: none;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  background-color: #fff0;
+}
+
+body {
+  background-color: #e3e3e3;
+}
+
+body .pclist {
+  width: 1000px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 7fr;
+      grid-template-columns: 1fr 7fr;
+  overflow: hidden;
+}
+
+body .pclist div.title div {
+  position: relative;
+  height: 80px;
+  background-color: #f1f1f1;
+  border: 1px solid #e1e2e4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .pclist div.title div:nth-child(1) {
+  background-color: #eaedf2;
+}
+
+body .pclist div.table .Listblock {
+  position: relative;
+  display: -webkit-box;
+  width: 100%;
+}
+
+body .pclist div.table .Listblock > div {
+  position: relative;
+  height: 80px;
+  border: 1px solid #e1e2e4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .pclist th {
+  padding: 0%;
+}
+
+body .pclist th > .Listblock > div {
+  background-color: #eaedf2;
+}
+
+body .pclist td > .Listblock > div {
+  background-color: #ffffff;
+}
+
+body .pclist td > .Listblock > div.sale:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: #ff8f27 transparent transparent;
+  border-style: solid;
+  border-width: 20px 20px 0 0;
+  top: -1px;
+  left: -1px;
+}
+
+body .pclist td > .Listblock > div.sale:after {
+  content: attr(data-title);
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  height: 20px;
+  color: #ff8f27;
+  font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .pclist td > .Listblock > div:hover {
+  background-color: #fff9e3;
+  border: 1px solid #ff8f27;
+}
+/*# sourceMappingURL=css.css.map */
