@@ -1,44 +1,40 @@
-$font--size: 12px;
+$font--size: 16px;
 
 $pclist-box--width: 1000px;
 
-$Listblock-box--height: 80px;
+$Listblock-box--height: 70px;
 $Listblock-sale--color : #ff8f27;
 $Listblock-sale--wh : 20px;
 
+$button-box--width : 20px;
+$button-box--height : 45px;
+$button-box--radius : 5px;
 
-@mixin  flexcc
-    display: flex
-    align-items: center
-    justify-content: center
+
+@import "../../../../../libary/rule_rwd.sass"
+
 
 *
     box-sizing: border-box
     font-size: $font--size
+    user-select: none 
     table 
         width: 100%
-        border-spacing: 0px
-    tr,td,table 
-        margin: 0px
-        padding: 0px
-        border: 0px
-    button,p
-        outline: none
-        margin: 0px
-        border: 0px
-        padding: 0px
-        background-color: #fff0
+        +phone
+            transition-duration: 0.16s
 
 body 
-    // +flexcc
-    background-color: #e3e3e3
+    // background-color: #e3e3e3
     .pclist
         width: $pclist-box--width
+        +phone
+            width: 100%
+            
         height: fit-content
         display: grid
         grid-template-columns: 1fr 7fr
-        overflow: hidden
-        // overflow: scroll
+        // overflow: hidden
+        
         div.title
             div
                 position: relative
@@ -48,9 +44,47 @@ body
                 +flexcc
                 &:nth-child(1)
                     background-color: #eaedf2
+                    span
+                        position: absolute
+                        padding: 5px
+                        &:nth-child(1)
+                            top: 0
+                            right: 0
+                        &:nth-child(2)
+                            bottom: 0
+                            left: 0
             
         div.table
             // overflow-x: scroll
+            position: relative
+            overflow: hidden
+            table
+                position: absolute
+                // left: -100%
+
+            &:hover>.TB
+                opacity: 1
+
+            .TB
+                visibility: hidden
+                +phone
+                    visibility: visible
+
+                position: absolute
+                background-color: hsla(0,0%,67%,1)
+                top: 50%
+                height: $button-box--height
+                width: $button-box--width
+                opacity: 0.54
+                color: #ffffff
+                font-weight: 1000
+
+            .R_B
+                right: 1px
+
+            .L_B
+                left: 0px
+
             .Listblock
                 position: relative
                 display: -webkit-box
@@ -66,11 +100,19 @@ body
             >.Listblock
                 >div
                     background-color: #eaedf2
+                    
         
         td
             >.Listblock
                 >div
                     background-color: #ffffff
+                    cursor: pointer
+                    p
+                        color: #999999
+                        display: inline
+
+                    &.col_row
+                        background-color: #f5f5f5
 
                     &.sale:before
                         content: ""
@@ -86,15 +128,17 @@ body
                     &.sale:after
                         content: attr(data-title)
                         position: absolute
-                        top: 0px
+                        top: -3px
                         left: $Listblock-sale--wh
                         height: $Listblock-sale--wh
                         color: $Listblock-sale--color
                         font-weight: 400
                         +flexcc
 
-                    &:hover
+                    &:hover,&.select
                         background-color: #fff9e3
                         border: 1px solid #ff8f27 
-
+        th,td 
+            ransition-duration: 0s
+            
 

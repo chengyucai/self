@@ -2,127 +2,77 @@ import React from 'react';
 import './css/css.css';
 
 
-class Header extends React.Component {
-  state = { 
-    title: "前後3天最低票價",
-    togglebtn: "低價日曆",
-  }
-  componentDidMount() {
-    this.setState(this.props);
-  }
 
-  render() {
-    console.log(this.state);
-
-      return (
-          <div className={this.state.className}>
-            <p>{this.state.title}</p>
-            <button>{this.state.togglebtn}</button>
-          </div>
-      );
-  }
-}
-
-const ob = {
-  "回程去程": [
-    "12/27(一)",
-    "12/28(二)",
-    "12/29(三)",
-    "12/30(四)",
-    "12/31(五)",
-    "01/01(六)",
-    "01/02(日)"
-  ],
-  "12/27(一)":[
-    "— —",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起"
-  ],
-  "12/28(二)":[
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起"
-  ],
-  "12/29(三)":[
-    "查看",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起"
-  ],
-  "12/30(四)":[
-    "查看",
-    "查看",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起"
-  ],
-  "12/31(五)":[
-    "查看",
-    "查看",
-    "查看",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起"
-  ],
-  "01/01(六)":[
-    "查看",
-    "查看",
-    "查看",
-    "查看",
-    "$15,568起",
-    "$15,568起",
-    "$15,568起"
-  ],
-  "01/02(日)":[
-    "查看",
-    "查看",
-    "查看",
-    "查看",
-    "查看",
-    "$15,568起",
-    "$15,568起"
-  ]
-};
+    
 
 class Tablelion extends React.Component {
   state = {
-    showBlock: 7,
+    Block: 7,
+
+    PC: true,
+    showBlock: null,
+    turnBlock: null,
     blockContent: null,
+    col: -1,
+    row: -1,
+    indexpage: 0,
+
   };
-  componentDidMount() {
-    this.setState(this.props);
+  componentWillReceiveProps(){
+    if (this.state.blockContent !== this.props.blockContent)
+      this.setState(this.props);
+  }
+  componentWillUnmount() {
+    // this.setState(this.props);
+    window.removeEventListener('resize', () => this.updateSize());
   }
 
-  
-  render() {
-    
-    let width= {width: 100 / this.state.showBlock + "%"};
-    // let lists = this.state.blockContent.map((list,key)=>{return <div key={key} style={width}>{list}</div>})
-    let lists,title;
+  componentDidMount() {
+    // this.setState(this.props);
+    this.updateSize();
+    window.addEventListener('resize', () => this.updateSize());
+  }
 
-    if (!!this.state.blockContent){
-      lists = Object.keys(this.state.blockContent).map((list,key) => {
-        let Objec = this.state.blockContent[list];
+
+  indexpage(data){
+    const pageMax = this.state.Block - this.props.showBlock;
+    let Indexpage= this.state.indexpage + (this.props.turnBlock*data);
+
+    if (Indexpage < 0)
+      Indexpage = 0;
+    else if (Indexpage > pageMax)
+      Indexpage = pageMax
+
+    this.setState({indexpage : Indexpage});
+  }
+
+  updateSize() {
+      this.setState(this.props);
+      this.setState({PC: !!(window.innerWidth>=980)});
+  }
+
+  changecolor=(col,row)=>{
+    this.setState({col: col,row: row});
+  }
+  
+
+  render() {
+    // console.log(this.setState)
+    // console.log(this.state);
+    let style= {width: 100 / (this.state.PC ? this.state.Block : this.props.showBlock) + "%"};
+    let lists;
+    if (!!this.props.blockContent){
+      lists = Object.keys(this.props.blockContent).map((list,key) => {
+        let Objec = this.props.blockContent[list];
+        let row=key;
 
         let content = Object.keys(Objec).map((list,key)=>{
-          return <div key={key} style={width}>{Objec[list]}</div>
+          let Class= (key === this.state.col && row === this.state.row) ? 'select' : ((key === this.state.col || row === this.state.row) ? 'col_row' :'');
+          Class+=(Objec[list]<15000) ? " sale" : "";
+          return <div key={key} className={Class} style={style} onClick={() => this.changecolor(key,row)} data-title={(Objec[list]<15000) ? "特價" : ""}><Thousands value={Objec[list]} Fword={"$"} Rword={"起"}></Thousands></div>
         });
        
-        if (key==0)
+        if (key === 0)
           return <tr key={key}>
                   <th>
                     <div className="Listblock" >
@@ -133,7 +83,7 @@ class Tablelion extends React.Component {
         else
           return <tr key={key}>
                     <td>
-                      <div className="Listblock" >
+                      <div className={"Listblock row"+key} >
                         {content}
                       </div>
                     </td>
@@ -141,20 +91,26 @@ class Tablelion extends React.Component {
         }
       );
     }
-    
-
+      const leftB="＜";
+      const rightB="＞";
+      let Style={ left : (this.state.PC ? 0 : -((this.state.indexpage)/this.props.showBlock)*100) +"%"}
+      
       return (
         <div className="table">
-          <table>
+          <table style={Style}>
             <tbody>
               {lists}
             </tbody>
           </table>
+          
+          {(this.state.indexpage !== 0) && <button className="TB L_B" onClick={() => this.indexpage(-1)}>{leftB}</button>}
+          {(this.state.indexpage <(this.state.Block - this.state.showBlock)) && <button className="TB R_B" onClick={() => this.indexpage(1)}>{rightB}</button>}
         </div>
       );
   }
 
 }
+
 class Tabletitle extends React.Component {
   state = {
     blockContent: null,
@@ -165,12 +121,15 @@ class Tabletitle extends React.Component {
 
   
   render() {
-    
     let title;
-
-    if (!!this.state.blockContent){
-      title = Object.keys(this.state.blockContent).map((list,key) => {
-        return  <div key={key}>{list}</div>
+    if (!!this.props.blockContent){
+      title = Object.keys(this.props.blockContent).map((list,key) => {
+        if (!key){
+          list=list.split(" ");
+          return  <div key={key}><span>{list[0]}</span><span>{list[1]}</span></div>
+        }
+        else
+          return  <div key={key}>{list}</div>
       });
     }
     
@@ -181,23 +140,67 @@ class Tabletitle extends React.Component {
   }
 
 }
-class MyComponent extends React.Component {
 
+class Thousands extends React.Component {
   state = {
-    Calendar: ob
+    Fword: null,
+    Rword: null,
+    value: 0,
   };
-
   componentDidMount() {
+    this.setState(this.props);
   }
 
-
+  
   render() {
+    let Tnumber = this.state.value.toString().split('.');
+    Tnumber[0] = Tnumber[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
     
+    return (
+      (typeof this.state.value==="number") ? 
+      <span>{this.state.Fword+Tnumber[0]+" "}<p>{this.state.Rword}</p></span> :
+      <span><p>{this.state.value}</p></span>
+    );
+  }
+
+}
+
+class MyComponent extends React.Component {
+  state = {
+    calendar: null,
+    showBlock: null,
+    turnBlock: null,
+  };
+
+  
+  componentDidMount() {
+    
+    }
+
+  
+  seting(parameter){
+    // console.log(parameter);
+    this.setState(parameter)
+  }
+  render() {
+
+    let showBlock,turnBlock;
+    if (this.state.showBlock<= 2)
+      showBlock=2;
+    else 
+      showBlock= (this.state.showBlock>4) ? 4 : this.state.showBlock;
+    if (this.state.turnBlock <= 0)
+      turnBlock = 1;
+    else 
+      turnBlock= (this.state.turnBlock>this.state.showBlock) ? this.state.showBlock : this.state.turnBlock;
+      // console.log(this.state);
       // console.log(erw);
+      
       return (
-        <div className="pclist">
-          <Tabletitle blockContent= {this.state.Calendar} />
-          <Tablelion showBlock={7} blockContent= {this.state.Calendar} />
+        <div className= "pclist">
+          <Tabletitle blockContent= {this.state.calendar} />
+          <Tablelion showBlock={showBlock} turnBlock={turnBlock} blockContent= {this.state.calendar} />
         </div>
           
           

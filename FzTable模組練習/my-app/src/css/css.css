@@ -1,30 +1,50 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-size: 12px;
+  outline: none !important;
+}
+
+body {
+  margin: 0;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+button, p, table, tr, td {
+  padding: 0px;
+  border: 0px;
+  margin: 0px;
+}
+
+button {
+  cursor: pointer;
+}
+
+[v-cloak] {
+  display: none !important;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 * table {
   width: 100%;
-  border-spacing: 0px;
 }
 
-* tr, * td, * table {
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
-}
-
-* button, * p {
-  outline: none;
-  margin: 0px;
-  border: 0px;
-  padding: 0px;
-  background-color: #fff0;
-}
-
-body {
-  background-color: #e3e3e3;
+@media screen and (max-width: 980px) {
+  * table {
+    -webkit-transition-duration: 0.16s;
+            transition-duration: 0.16s;
+  }
 }
 
 body .pclist {
@@ -36,27 +56,90 @@ body .pclist {
   display: grid;
   -ms-grid-columns: 1fr 7fr;
       grid-template-columns: 1fr 7fr;
-  overflow: hidden;
+}
+
+@media screen and (max-width: 980px) {
+  body .pclist {
+    width: 100%;
+  }
 }
 
 body .pclist div.title div {
   position: relative;
-  height: 80px;
+  height: 70px;
   background-color: #f1f1f1;
   border: 1px solid #e1e2e4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 body .pclist div.title div:nth-child(1) {
   background-color: #eaedf2;
+}
+
+body .pclist div.title div:nth-child(1) span {
+  position: absolute;
+  padding: 5px;
+}
+
+body .pclist div.title div:nth-child(1) span:nth-child(1) {
+  top: 0;
+  right: 0;
+}
+
+body .pclist div.title div:nth-child(1) span:nth-child(2) {
+  bottom: 0;
+  left: 0;
+}
+
+body .pclist div.table {
+  position: relative;
+  overflow: hidden;
+}
+
+body .pclist div.table table {
+  position: absolute;
+}
+
+body .pclist div.table:hover > .TB {
+  opacity: 1;
+}
+
+body .pclist div.table .TB {
+  visibility: hidden;
+  position: absolute;
+  background-color: #ababab;
+  top: 50%;
+  height: 45px;
+  width: 20px;
+  opacity: 0.54;
+  color: #ffffff;
+  font-weight: 1000;
+}
+
+@media screen and (max-width: 980px) {
+  body .pclist div.table .TB {
+    visibility: visible;
+  }
+}
+
+body .pclist div.table .R_B {
+  right: 1px;
+}
+
+body .pclist div.table .L_B {
+  left: 0px;
 }
 
 body .pclist div.table .Listblock {
@@ -67,17 +150,21 @@ body .pclist div.table .Listblock {
 
 body .pclist div.table .Listblock > div {
   position: relative;
-  height: 80px;
+  height: 70px;
   border: 1px solid #e1e2e4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 body .pclist th {
@@ -90,6 +177,16 @@ body .pclist th > .Listblock > div {
 
 body .pclist td > .Listblock > div {
   background-color: #ffffff;
+  cursor: pointer;
+}
+
+body .pclist td > .Listblock > div p {
+  color: #999999;
+  display: inline;
+}
+
+body .pclist td > .Listblock > div.col_row {
+  background-color: #f5f5f5;
 }
 
 body .pclist td > .Listblock > div.sale:before {
@@ -107,7 +204,7 @@ body .pclist td > .Listblock > div.sale:before {
 body .pclist td > .Listblock > div.sale:after {
   content: attr(data-title);
   position: absolute;
-  top: 0px;
+  top: -3px;
   left: 20px;
   height: 20px;
   color: #ff8f27;
@@ -115,16 +212,24 @@ body .pclist td > .Listblock > div.sale:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-body .pclist td > .Listblock > div:hover {
+body .pclist td > .Listblock > div:hover, body .pclist td > .Listblock > div.select {
   background-color: #fff9e3;
   border: 1px solid #ff8f27;
+}
+
+body .pclist th, body .pclist td {
+  ransition-duration: 0s;
 }
 /*# sourceMappingURL=css.css.map */
