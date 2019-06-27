@@ -2,9 +2,6 @@ import React from 'react';
 import './css/css.css';
 
 
-
-    
-
 class Tablelion extends React.Component {
   state = {
     Block: 7,
@@ -59,6 +56,7 @@ class Tablelion extends React.Component {
   render() {
     // console.log(this.setState)
     // console.log(this.state);
+    // console.log(this.props.speed);
     let style= {width: 100 / (this.state.PC ? this.state.Block : this.props.showBlock) + "%"};
     let lists;
     if (!!this.props.blockContent){
@@ -93,7 +91,9 @@ class Tablelion extends React.Component {
     }
       const leftB="＜";
       const rightB="＞";
-      let Style={ left : (this.state.PC ? 0 : -((this.state.indexpage)/this.props.showBlock)*100) +"%"}
+      let Style={ left : (this.state.PC ? 0 : -((this.state.indexpage)/this.props.showBlock)*100) +"%",
+                  transition: this.state.PC ? "0s" : this.props.speed+"s"
+      }
       
       return (
         <div className="table">
@@ -128,8 +128,20 @@ class Tabletitle extends React.Component {
           list=list.split(" ");
           return  <div key={key}><span>{list[0]}</span><span>{list[1]}</span></div>
         }
-        else
-          return  <div key={key}>{list}</div>
+        else{
+          const regexp = new RegExp('(\\d*)\\/(\\d*)\\/(\\d*)(.*)', "g");
+
+          let date = list.toString().replace(regexp, '$2/$3$4');
+          let yer;
+          if (list.toString().match(regexp)){
+            let year = list.toString().replace(regexp, '$2/$3');
+            yer = list.toString().replace(regexp, '$1');
+            if (year !== "01/01")
+              yer = "";
+            return  <div key={key}><span><b>{yer}</b><p>{date}</p></span></div>
+          }
+        }
+          
       });
     }
     
@@ -146,6 +158,7 @@ class Thousands extends React.Component {
     Fword: null,
     Rword: null,
     value: 0,
+    year: '2017'
   };
   componentDidMount() {
     this.setState(this.props);
@@ -153,14 +166,23 @@ class Thousands extends React.Component {
 
   
   render() {
-    let Tnumber = this.state.value.toString().split('.');
-    Tnumber[0] = Tnumber[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    // let Tnumber = this.state.value.toString().split('.');
+    // Tnumber[0] = Tnumber[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    const regexp = new RegExp('(\\d*)\\/(\\d*)\\/(\\d*)(.*)', "g");
 
-    
+    let date = this.state.value.toString().replace(regexp, '$2/$3$4');
+    let yer;
+    if (this.state.value.toString().match(regexp)){
+      let year = this.state.value.toString().replace(regexp, '$2/$3');
+      yer = this.state.value.toString().replace(regexp, '$1');
+      if (year !== "01/01")
+        yer = "";
+    }
+
     return (
       (typeof this.state.value==="number") ? 
-      <span>{this.state.Fword+Tnumber[0]+" "}<p>{this.state.Rword}</p></span> :
-      <span><p>{this.state.value}</p></span>
+      <span>{this.state.Fword+this.state.value.toLocaleString()+" "}<p>{this.state.Rword}</p></span> :
+      <span><b>{yer}</b><p>{date}</p></span>
     );
   }
 
@@ -171,6 +193,7 @@ class MyComponent extends React.Component {
     calendar: null,
     showBlock: null,
     turnBlock: null,
+    speed: null
   };
 
   
@@ -200,7 +223,7 @@ class MyComponent extends React.Component {
       return (
         <div className= "pclist">
           <Tabletitle blockContent= {this.state.calendar} />
-          <Tablelion showBlock={showBlock} turnBlock={turnBlock} blockContent= {this.state.calendar} />
+          <Tablelion showBlock={showBlock} turnBlock={turnBlock} blockContent= {this.state.calendar} speed={this.state.speed}/>
         </div>
           
           

@@ -1,4 +1,4 @@
-$font--size: 16px;
+$font--size: 17px;
 
 $pclist-box--width: 1000px;
 
@@ -102,7 +102,14 @@ body
             >.Listblock
                 >div
                     background-color: #eaedf2
-                    
+                    font-weight: normal
+
+        
+        b
+            font-size: $font--size - 2px
+            font-weight: normal
+            color: #24a07c
+            float: right    
         
         td
             >.Listblock
@@ -124,16 +131,17 @@ body
                         border-color: $Listblock-sale--color transparent transparent
                         border-style: solid
                         border-width: $Listblock-sale--wh $Listblock-sale--wh 0 0
-                        top: -1px
-                        left: -1px
+                        top: 0px
+                        left: 0px
 
                     &.sale:after
                         content: attr(data-title)
                         position: absolute
-                        top: -3px
+                        top: 0px
                         left: $Listblock-sale--wh
                         height: $Listblock-sale--wh
                         color: $Listblock-sale--color
+                        font-size: $font--size - 3px
                         font-weight: 400
                         +flexcc
 
