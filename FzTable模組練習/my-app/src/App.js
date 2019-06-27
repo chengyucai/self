@@ -104,7 +104,7 @@ class Tablelion extends React.Component {
           </table>
           
           {(this.state.indexpage !== 0) && <button className="TB L_B" onClick={() => this.indexpage(-1)}>{leftB}</button>}
-          {(this.state.indexpage <(this.state.Block - this.state.showBlock)) && <button className="TB R_B" onClick={() => this.indexpage(1)}>{rightB}</button>}
+          {(this.state.indexpage <(this.state.Block - this.props.showBlock)) && <button className="TB R_B" onClick={() => this.indexpage(1)}>{rightB}</button>}
         </div>
       );
   }

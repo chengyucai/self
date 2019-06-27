@@ -68,7 +68,8 @@ body .pclist div.title div {
   position: relative;
   height: 70px;
   background-color: #f1f1f1;
-  border: 1px solid #e1e2e4;
+  border-bottom: 1px solid #e1e2e4;
+  border-right: 1px solid #e1e2e4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -151,7 +152,8 @@ body .pclist div.table .Listblock {
 body .pclist div.table .Listblock > div {
   position: relative;
   height: 70px;
-  border: 1px solid #e1e2e4;
+  border-bottom: 1px solid #e1e2e4;
+  border-right: 1px solid #e1e2e4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
