@@ -10,6 +10,7 @@ $button-box--width : 20px;
 $button-box--height : 45px;
 $button-box--radius : 5px;
 
+$block: 7
 
 @import "../../../../../libary/rule_rwd.sass"
 
@@ -27,12 +28,13 @@ body
     // background-color: #e3e3e3
     .pclist
         width: $pclist-box--width
+        // width: 100%
         +phone
             width: 100%
             
         height: fit-content
         display: grid
-        grid-template-columns: 1fr 7fr
+        grid-template-columns: 80px auto
         // overflow: hidden
         
         div.title
@@ -60,8 +62,8 @@ body
             position: relative
             overflow: hidden
             table
-                position: absolute
-                // left: -100%
+                position: relative
+                width: 100%
 
             &:hover>.TB
                 opacity: 1
@@ -97,6 +99,11 @@ body
                     border-bottom: 1px solid #e1e2e4
                     border-right: 1px solid #e1e2e4
                     +flexcc
+                    @for $i from 1 through $block
+                        &.space#{$i}
+                            width: 100 / $i + %
+                    
+
         th 
             padding: 0%
             >.Listblock

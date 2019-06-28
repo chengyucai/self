@@ -54,8 +54,8 @@ body .pclist {
   height: fit-content;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 7fr;
-      grid-template-columns: 1fr 7fr;
+  -ms-grid-columns: 80px auto;
+      grid-template-columns: 80px auto;
 }
 
 @media screen and (max-width: 980px) {
@@ -110,7 +110,8 @@ body .pclist div.table {
 }
 
 body .pclist div.table table {
-  position: absolute;
+  position: relative;
+  width: 100%;
 }
 
 body .pclist div.table:hover > .TB {
@@ -167,6 +168,34 @@ body .pclist div.table .Listblock > div {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+body .pclist div.table .Listblock > div.space1 {
+  width: 100%;
+}
+
+body .pclist div.table .Listblock > div.space2 {
+  width: 50%;
+}
+
+body .pclist div.table .Listblock > div.space3 {
+  width: 33.33333%;
+}
+
+body .pclist div.table .Listblock > div.space4 {
+  width: 25%;
+}
+
+body .pclist div.table .Listblock > div.space5 {
+  width: 20%;
+}
+
+body .pclist div.table .Listblock > div.space6 {
+  width: 16.66667%;
+}
+
+body .pclist div.table .Listblock > div.space7 {
+  width: 14.28571%;
 }
 
 body .pclist th {

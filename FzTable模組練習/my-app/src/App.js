@@ -13,7 +13,6 @@ class Tablelion extends React.Component {
     col: -1,
     row: -1,
     indexpage: 0,
-
   };
   componentWillReceiveProps(){
     if (this.state.blockContent !== this.props.blockContent)
@@ -39,7 +38,9 @@ class Tablelion extends React.Component {
       Indexpage = 0;
     else if (Indexpage > pageMax)
       Indexpage = pageMax
-
+    // console.log(typeof this.props.callback);
+    
+    //   this.props.whenClick();
     this.setState({indexpage : Indexpage});
   }
 
@@ -48,16 +49,18 @@ class Tablelion extends React.Component {
       this.setState({PC: !!(window.innerWidth>=980)});
   }
 
-  changecolor=(col,row)=>{
+  changecolor=(col,row,e)=>{
+    if (typeof this.props.callback === "function")
+      this.props.callback(e.currentTarget);
     this.setState({col: col,row: row});
+
   }
   
 
   render() {
-    // console.log(this.setState)
-    // console.log(this.state);
-    // console.log(this.props.speed);
-    let style= {width: 100 / (this.state.PC ? this.state.Block : this.props.showBlock) + "%"};
+
+    let space= (this.state.PC ? this.state.Block : this.props.showBlock);
+
     let lists;
     if (!!this.props.blockContent){
       lists = Object.keys(this.props.blockContent).map((list,key) => {
@@ -67,7 +70,7 @@ class Tablelion extends React.Component {
         let content = Object.keys(Objec).map((list,key)=>{
           let Class= (key === this.state.col && row === this.state.row) ? 'select' : ((key === this.state.col || row === this.state.row) ? 'col_row' :'');
           Class+=(Objec[list]<15000) ? " sale" : "";
-          return <div key={key} className={Class} style={style} onClick={() => this.changecolor(key,row)} data-title={(Objec[list]<15000) ? "特價" : ""}><Thousands value={Objec[list]} Fword={"$"} Rword={"起"}></Thousands></div>
+          return <div key={key} className={Class+" space"+space} onClick={(e) => this.changecolor(key,row,e)} data-title={(Objec[list]<15000) ? "特價" : ""}><Thousands value={Objec[list]} Fword={"$"} Rword={"起"}></Thousands></div>
         });
        
         if (key === 0)
@@ -190,40 +193,31 @@ class Thousands extends React.Component {
 
 class MyComponent extends React.Component {
   state = {
-    calendar: null,
-    showBlock: null,
-    turnBlock: null,
-    speed: null
+    
   };
-
   
   componentDidMount() {
-    
+    this.setState(this.props.style);
     }
 
   
-  seting(parameter){
-    // console.log(parameter);
-    this.setState(parameter)
-  }
   render() {
-
+    let count = this.props.style.count;
+    console.log(this.state);
     let showBlock,turnBlock;
-    if (this.state.showBlock<= 2)
-      showBlock=2;
+    if (typeof count.show !== "number" || count.show<= 0)
+      showBlock=1;
     else 
-      showBlock= (this.state.showBlock>4) ? 4 : this.state.showBlock;
-    if (this.state.turnBlock <= 0)
+      showBlock= (count.show>4) ? 4 : count.show;
+    if (typeof count.slide !== "number" || count.slide <= 0)
       turnBlock = 1;
     else 
-      turnBlock= (this.state.turnBlock>this.state.showBlock) ? this.state.showBlock : this.state.turnBlock;
-      // console.log(this.state);
-      // console.log(erw);
-      
+      turnBlock= (count.slide > showBlock) ? showBlock : count.slide;
+
       return (
         <div className= "pclist">
           <Tabletitle blockContent= {this.state.calendar} />
-          <Tablelion showBlock={showBlock} turnBlock={turnBlock} blockContent= {this.state.calendar} speed={this.state.speed}/>
+          <Tablelion showBlock={showBlock} turnBlock={turnBlock} blockContent= {this.state.calendar} speed={this.state.speed} callback={this.state.whenClick}/>
         </div>
           
           
