@@ -1,0 +1,656 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none !important;
+}
+
+body {
+  margin: 0;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+button, p, table, tr, td {
+  padding: 0px;
+  border: 0px;
+  margin: 0px;
+}
+
+button {
+  cursor: pointer;
+}
+
+[v-cloak] {
+  display: none !important;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #dddddd;
+}
+
+body .calendar {
+  width: 600px;
+  display: -ms-grid;
+  display: grid;
+  grid-row-gap: 1px;
+  -ms-grid-rows: 40px 50px 30px 540px;
+      grid-template-rows: 40px 50px 30px 540px;
+}
+
+body .calendar > div.switch {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0077b3;
+}
+
+body .calendar > div.switch span {
+  font-size: 15px;
+}
+
+body .calendar > div.month {
+  background-color: #ede9dd;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1px;
+  -ms-grid-columns: 20px auto 20px;
+      grid-template-columns: 20px auto 20px;
+}
+
+body .calendar > div.month * {
+  position: relative;
+}
+
+body .calendar > div.month > div {
+  padding-top: 2px;
+  display: -webkit-inline-box;
+  overflow: hidden;
+}
+
+body .calendar > div.month > div > div {
+  width: 33.33333%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+  -ms-flex-flow: column;
+      flex-flow: column;
+}
+
+body .calendar > div.month > div > div > div {
+  color: #24a07c;
+}
+
+body .calendar > div.month > div > div.select {
+  background-color: #ffff;
+  color: #24a07c;
+}
+
+body .calendar > div.month > div.left-0 > div {
+  left: 0%;
+}
+
+body .calendar > div.month > div.left-1 > div {
+  left: -33.33333%;
+}
+
+body .calendar > div.month > div.left-2 > div {
+  left: -66.66667%;
+}
+
+body .calendar > div.month > div.left-3 > div {
+  left: -100%;
+}
+
+body .calendar > div.month > div.left-4 > div {
+  left: -133.33333%;
+}
+
+body .calendar > div.month > div.left-5 > div {
+  left: -166.66667%;
+}
+
+body .calendar > div.month > div.left-6 > div {
+  left: -200%;
+}
+
+body .calendar > div.month > div.left-7 > div {
+  left: -233.33333%;
+}
+
+body .calendar > div.month > div.left-8 > div {
+  left: -266.66667%;
+}
+
+body .calendar > div.month > div.left-9 > div {
+  left: -300%;
+}
+
+body .calendar > div.month > div.left-10 > div {
+  left: -333.33333%;
+}
+
+body .calendar > div.month > div.left-11 > div {
+  left: -366.66667%;
+}
+
+body .calendar > div.month > div.left-12 > div {
+  left: -400%;
+}
+
+body .calendar > div.month > div.left-13 > div {
+  left: -433.33333%;
+}
+
+body .calendar > div.month > div.left-14 > div {
+  left: -466.66667%;
+}
+
+body .calendar > div.month > div.left-15 > div {
+  left: -500%;
+}
+
+body .calendar > div.month > div.left-16 > div {
+  left: -533.33333%;
+}
+
+body .calendar > div.month > div.left-17 > div {
+  left: -566.66667%;
+}
+
+body .calendar > div.month > div.left-18 > div {
+  left: -600%;
+}
+
+body .calendar > div.month > div.left-19 > div {
+  left: -633.33333%;
+}
+
+body .calendar > div.month > div.left-20 > div {
+  left: -666.66667%;
+}
+
+body .calendar > div.month > div.left-21 > div {
+  left: -700%;
+}
+
+body .calendar > div.month > div.left-22 > div {
+  left: -733.33333%;
+}
+
+body .calendar > div.month > div.left-23 > div {
+  left: -766.66667%;
+}
+
+body .calendar > div.month > div.left-24 > div {
+  left: -800%;
+}
+
+body .calendar > div.month > div.left-25 > div {
+  left: -833.33333%;
+}
+
+body .calendar > div.month > div.left-26 > div {
+  left: -866.66667%;
+}
+
+body .calendar > div.month > div.left-27 > div {
+  left: -900%;
+}
+
+body .calendar > div.month > div.left-28 > div {
+  left: -933.33333%;
+}
+
+body .calendar > div.month > div.left-29 > div {
+  left: -966.66667%;
+}
+
+body .calendar > div.month > div.left-30 > div {
+  left: -1000%;
+}
+
+body .calendar > div.month > div.left-31 > div {
+  left: -1033.33333%;
+}
+
+body .calendar > div.month > div.left-32 > div {
+  left: -1066.66667%;
+}
+
+body .calendar > div.month > div.left-33 > div {
+  left: -1100%;
+}
+
+body .calendar > div.month > div.left-34 > div {
+  left: -1133.33333%;
+}
+
+body .calendar > div.month > div.left-35 > div {
+  left: -1166.66667%;
+}
+
+body .calendar > div.month > div.left-36 > div {
+  left: -1200%;
+}
+
+body .calendar > div.month > div.left-37 > div {
+  left: -1233.33333%;
+}
+
+body .calendar > div.month > div.left-38 > div {
+  left: -1266.66667%;
+}
+
+body .calendar > div.month > div.left-39 > div {
+  left: -1300%;
+}
+
+body .calendar > div.month > div.left-40 > div {
+  left: -1333.33333%;
+}
+
+body .calendar > div.month > div.left-41 > div {
+  left: -1366.66667%;
+}
+
+body .calendar > div.month > div.left-42 > div {
+  left: -1400%;
+}
+
+body .calendar > div.month > div.left-43 > div {
+  left: -1433.33333%;
+}
+
+body .calendar > div.month > div.left-44 > div {
+  left: -1466.66667%;
+}
+
+body .calendar > div.month > div.left-45 > div {
+  left: -1500%;
+}
+
+body .calendar > div.month > div.left-46 > div {
+  left: -1533.33333%;
+}
+
+body .calendar > div.month > div.left-47 > div {
+  left: -1566.66667%;
+}
+
+body .calendar > div.month > div.left-48 > div {
+  left: -1600%;
+}
+
+body .calendar > div.month > div.left-49 > div {
+  left: -1633.33333%;
+}
+
+body .calendar > div.month > div.left-50 > div {
+  left: -1666.66667%;
+}
+
+body .calendar > div.month > button {
+  background-color: #0000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .calendar > div.month > button::before {
+  content: "";
+  position: relative;
+  width: 0;
+  height: 0;
+  margin: auto;
+  display: inline-block;
+  border-style: solid;
+  position: absolute;
+}
+
+body .calendar > div.month > button:nth-child(1)::before {
+  border-width: 7px 7px 7px 0px;
+  border-color: transparent #e10500 transparent transparent;
+}
+
+body .calendar > div.month > button:nth-child(3)::before {
+  border-width: 7px 0px 7px 7px;
+  border-color: transparent transparent transparent #e10500;
+}
+
+body .calendar > div.week {
+  background-color: #fff;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 0px;
+  visibility: visible;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+}
+
+body .calendar > div.week > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 15px;
+}
+
+body .calendar > div.days {
+  background-color: #f8f8f8;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 0px;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  -ms-grid-rows: (1fr)[6];
+      grid-template-rows: repeat(6, 1fr);
+}
+
+body .calendar > div.days > div {
+  position: relative;
+  background-color: #fff;
+  padding-left: 3px;
+  border-bottom: #eeeeee  1px solid;
+  border-right: #eeeeee  1px solid;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (1fr)[5];
+      grid-template-rows: repeat(5, 1fr);
+      grid-template-areas: "nmb tip" "state state" "sell sell" "group group" "price price";
+  color: #666;
+}
+
+body .calendar > div.days > div:hover, body .calendar > div.days > div.active {
+  background-color: #fff9e3;
+}
+
+body .calendar > div.days > div.active {
+  border: #66bb3c 2px solid;
+}
+
+body .calendar > div.days > div.none-0 {
+  position: absolute;
+}
+
+body .calendar > div.days > div.none-1 {
+  background-color: #f8f8f8;
+  grid-column: span 1;
+}
+
+body .calendar > div.days > div.none-2 {
+  background-color: #f8f8f8;
+  grid-column: span 2;
+}
+
+body .calendar > div.days > div.none-3 {
+  background-color: #f8f8f8;
+  grid-column: span 3;
+}
+
+body .calendar > div.days > div.none-4 {
+  background-color: #f8f8f8;
+  grid-column: span 4;
+}
+
+body .calendar > div.days > div.none-5 {
+  background-color: #f8f8f8;
+  grid-column: span 5;
+}
+
+body .calendar > div.days > div.none-6 {
+  background-color: #f8f8f8;
+  grid-column: span 6;
+}
+
+body .calendar > div.days > div > .nmb {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: nmb;
+}
+
+body .calendar > div.days > div > .tip {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: tip;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fe8400;
+}
+
+body .calendar > div.days > div > .tip > span {
+  background-color: #fe8400;
+  color: #fff;
+}
+
+body .calendar > div.days > div > .state {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: state;
+}
+
+body .calendar > div.days > div > .state.greed {
+  color: #24a07c;
+}
+
+body .calendar > div.days > div > .state.yellow {
+  color: #ff7800;
+}
+
+body .calendar > div.days > div > .state.white {
+  color: #999999;
+}
+
+body .calendar > div.days > div > .sell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: sell;
+}
+
+body .calendar > div.days > div > .group {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: group;
+}
+
+body .calendar > div.days > div > .price {
+  -ms-grid-row: 2;
+  -ms-grid-column: 4;
+  grid-area: price;
+  color: #e10500;
+}
+
+body .calendar > div.days > div > .week {
+  position: absolute;
+  visibility: hidden;
+}
+
+body .calendar_list {
+  grid-row-gap: 0px;
+  -ms-grid-rows: 40px 50px 540px;
+      grid-template-rows: 40px 50px 540px;
+}
+
+body .calendar_list * {
+  font-size: 13px;
+}
+
+body .calendar_list > div.week {
+  position: absolute;
+  visibility: hidden;
+}
+
+body .calendar_list > div.days {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: (minmax(67.5px, 67.5px))[auto-fill];
+      grid-template-rows: repeat(auto-fill, minmax(67.5px, 67.5px));
+  overflow-y: hidden;
+}
+
+body .calendar_list > div.days > div:nth-child(1) {
+  visibility: hidden;
+}
+
+body .calendar_list > div.days > div {
+  height: 67.5px;
+  -ms-grid-columns: 1.2fr 1.3fr 5fr 2fr;
+      grid-template-columns: 1.2fr 1.3fr 5fr 2fr;
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-areas: "nmb  sell group state" "week tip . price";
+  padding: 5px 10px 5px 0px;
+}
+
+body .calendar_list > div.days > div.empty {
+  position: absolute;
+  visibility: hidden;
+}
+
+body .calendar_list > div.days > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .calendar_list > div.days > div .nmb {
+  font-size: 20px;
+}
+
+body .calendar_list > div.days > div .tip {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  background-color: #fe840000;
+}
+
+body .calendar_list > div.days > div .tip > span {
+  background-color: #fe8400;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+body .calendar_list > div.days > div .group {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+body .calendar_list > div.days > div .sell {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+body .calendar_list > div.days > div .state {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 15px;
+}
+
+body .calendar_list > div.days > div .price {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 15px;
+}
+
+body .calendar_list > div.days > div .week {
+  position: relative;
+  visibility: visible;
+}
+
+body .calendar_list > div.days > div:nth-child(1) {
+  position: absolute;
+}
+/*# sourceMappingURL=css.css.map */

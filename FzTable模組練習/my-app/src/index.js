@@ -83,7 +83,7 @@ var style={
         show: 4,
         slide: 2,
     },
-    speed: 0.5,
+    speed: 5,
     whenClick: function($element) {
         console.log($element);
     }

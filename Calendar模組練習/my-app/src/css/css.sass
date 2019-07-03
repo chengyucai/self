@@ -1,0 +1,229 @@
+$font--size: 10px;
+
+$block-col: 7;
+$block-row: 6;
+
+$list-block-row: 8;
+
+
+$calendar-box--width: 600px;
+$days-box--height: 540px
+
+$left-max: 50;
+@import "../../../../../libary/rule_rwd.sass"
+
+
+*
+    box-sizing: border-box
+    font-size: $font--size
+    user-select: none 
+body 
+    +flexcc
+    background: #dddddd
+    .calendar
+        width: $calendar-box--width
+        // height: fit-content
+        display: grid
+        grid-row-gap: 1px
+        // grid-template-columns: repeat($block,1fr)
+        grid-template-rows: 40px 50px 30px $days-box--height
+        // border: #eeeeee  1px solid
+
+        >div.switch
+            background-color: #fff
+            +flexcc
+            color: #0077b3
+            span 
+                font-size: $font--size + 5px
+
+        >div.month
+            background-color: #ede9dd
+            display: grid
+            grid-gap: 1px
+            grid-template-columns: 20px auto 20px
+            
+            *
+                position: relative
+                
+            >div
+                padding-top: 2px
+                display: -webkit-inline-box
+                overflow: hidden
+                >div
+                    width: 100/3 + %
+                    +flexcc
+                    font-size: $font--size + 8px
+                    flex-flow: column
+                    // transition: left 0.4s
+                    // background-color: #fffb
+                    >div
+                        color: #24a07c
+                    &.select
+                        background-color: #ffff
+                        color: #24a07c
+                @for $i from 0 through $left-max
+                    &.left-#{$i}
+                        >div
+                            left: -100 / 3 * $i + %
+                
+
+            >button
+                background-color: #0000
+                +flexcc
+
+                &::before
+                    content: ""
+                    position: relative
+                    width: 0
+                    height: 0
+                    margin: auto
+                    display: inline-block
+                    border-style: solid
+                    position: absolute
+                &:nth-child(1)::before
+                    border-width: 7px 7px 7px 0px
+                    border-color: transparent #e10500 transparent transparent               
+                &:nth-child(3)::before
+                    border-width: 7px 0px 7px 7px
+                    border-color: transparent transparent transparent #e10500
+
+        >div.week
+            background-color: #fff
+            display: grid
+            grid-gap: 0px
+            visibility: visible
+            grid-template-columns: repeat($block-col,1fr)
+            >div
+                +flexcc
+                font-size: $font--size + 5px
+
+        >div.days
+            background-color: #f8f8f8
+            display: grid
+            grid-gap: 0px
+            grid-template-columns: repeat($block-col,1fr)
+            grid-template-rows: repeat($block-row,1fr)
+
+            >div
+                position: relative
+                background-color: #fff
+                
+                padding-left: 3px
+
+                border-bottom: #eeeeee  1px solid
+                border-right: #eeeeee  1px solid
+
+                display: grid
+                grid-template-columns: repeat(2,1fr)
+                grid-template-rows: repeat(5,1fr)
+                grid-template-areas: "nmb tip" "state state" "sell sell" "group group" "price price"
+                
+                color: #666
+
+                &:hover,&.active
+                    background-color: #fff9e3
+                    // border: #66bb3c 2px solid
+                &.active
+                    border: #66bb3c 2px solid
+                    
+                &.none-0
+                    position: absolute
+                @for $box from 1 through ($block-col - 1)
+                    &.none-#{$box}
+                        background-color: #f8f8f8
+                        grid-column: span $box
+                >.nmb
+                    grid-area: nmb
+                >.tip
+                    grid-area: tip
+                    +flexcc
+                    background-color: #fe8400
+                    >span
+                        background-color: #fe8400
+                        color: #fff
+                >.state
+                    grid-area: state
+                    &.greed
+                        color: #24a07c
+                    &.yellow
+                        color: #ff7800
+                    &.white
+                        color: #999999
+
+                >.sell
+                    grid-area: sell
+                >.group
+                    grid-area: group
+                >.price
+                    grid-area: price
+                    color: #e10500
+                >.week
+                    position: absolute
+                    visibility: hidden
+
+                
+
+
+    .calendar_list
+        grid-row-gap: 0px
+        // grid-template-columns: repeat($block,1fr)
+        grid-template-rows: 40px 50px $days-box--height
+        
+        *
+            font-size: $font--size + 3px
+
+        >div.week
+            position: absolute
+            visibility: hidden
+        
+        >div.days
+            grid-template-columns: 1fr
+            grid-template-rows: repeat(auto-fill,minmax($days-box--height / $list-block-row,$days-box--height / $list-block-row))
+            overflow-y: hidden
+            // overflow: visible
+            >div:nth-child(1)
+                visibility: hidden
+            >div
+                height: $days-box--height / $list-block-row
+                grid-template-columns: 1.2fr 1.3fr 5fr 2fr
+                grid-template-rows: repeat(2,1fr)
+                grid-template-areas: "nmb  sell group state" "week tip . price"
+                padding: 5px 10px 5px 0px
+                // transition-duration: .16s
+                &.empty
+                    position: absolute
+                    visibility: hidden
+
+                >div
+                    +flexcc
+                .nmb
+                    font-size: $font--size + 10px
+                .tip
+                    justify-content: left
+                    background-color: #fe840000
+                    >span
+                        background-color: #fe8400
+                        color: #fff
+                        padding: 4px 10px
+                        border-radius: 2px
+                        
+                .group
+                    justify-content: left
+                .sell
+                    justify-content: left
+                .state
+                    justify-content: flex-end
+                    font-size: $font--size + 5px
+                .price
+                    justify-content: flex-end
+                    font-size: $font--size + 5px
+                .week
+                    position: relative
+                    visibility: visible
+
+                    
+                    
+            >div:nth-child(1)
+                position: absolute
+
+
