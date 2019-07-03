@@ -17,6 +17,8 @@ $left-max: 50;
     box-sizing: border-box
     font-size: $font--size
     user-select: none 
+    +pc
+        +noscrollbar
 body 
     +flexcc
     background: #dddddd
@@ -54,7 +56,7 @@ body
                     +flexcc
                     font-size: $font--size + 8px
                     flex-flow: column
-                    // transition: left 0.4s
+                    // transition: left .6s
                     // background-color: #fffb
                     >div
                         color: #24a07c
@@ -179,7 +181,8 @@ body
         >div.days
             grid-template-columns: 1fr
             grid-template-rows: repeat(auto-fill,minmax($days-box--height / $list-block-row,$days-box--height / $list-block-row))
-            overflow-y: hidden
+            // overflow-y: hidden
+            overflow-y: overlay
             // overflow: visible
             >div:nth-child(1)
                 visibility: hidden

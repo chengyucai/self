@@ -45,7 +45,7 @@ class Days extends React.Component {
             <div className={"state " + this.props.statuStyle[m.status]}>{m.status}</div>
             <div className="sell">可賣 : {m.totalVacnacy}</div>
             <div className="group">團位 : {m.availableVancancy}</div>
-            <div className="price">${m.price}</div> 
+            <div className="price">${m.price.toLocaleString()}</div> 
             <div className="week">{this.props.week[moment(m.date).weekday()]}</div> 
           </div>
 
@@ -137,6 +137,22 @@ class MyComponent extends React.Component {
   }
   PrevMonth(){
     this.setState({initYearMonth: moment(this.state.initYearMonth).add(-1, 'M').format('YYYYMMM')})
+  }
+  switch(){
+    this.setState({toggle: !this.state.toggle})
+  }
+  resetData(data){
+    try{
+      // console.log(moment("2017/05/15").format('YYYYMM'));
+      data=data.sort((a,b) =>
+      moment(a.date).format('YYYYMMDD') - moment(b.date).format('YYYYMMDD'))
+      this.setState({dataSource: data,
+	                  initYearMonth: moment(data[0].date).format('YYYY/MM'),
+      });
+    }catch(e){
+      throw e
+    }
+
   }
   changeMonth(e,value,data){
     if (typeof value === "string"){

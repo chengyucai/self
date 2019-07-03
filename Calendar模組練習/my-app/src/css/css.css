@@ -36,6 +36,18 @@ button {
           user-select: none;
 }
 
+@media screen and (min-width: 980px) {
+  * ::-webkit-scrollbar {
+    width: 0px;
+  }
+}
+
+@media screen and (min-width: 980px) and (max-width: 980px) {
+  * ::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -563,7 +575,7 @@ body .calendar_list > div.days {
       grid-template-columns: 1fr;
   -ms-grid-rows: (minmax(67.5px, 67.5px))[auto-fill];
       grid-template-rows: repeat(auto-fill, minmax(67.5px, 67.5px));
-  overflow-y: hidden;
+  overflow-y: overlay;
 }
 
 body .calendar_list > div.days > div:nth-child(1) {
